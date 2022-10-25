@@ -47,18 +47,20 @@ class UpdateFragment : Fragment() {
         return view
     }
 
+    //Melakukan udapte dari input yang dimasukan
     private fun updateItem() {
         val kursus = updateKursus_et.text.toString()
         val lembaga = updateLembaga_et.text.toString()
         val harga =updateHarga_et.text
 
+
         if (inputCheck(kursus, lembaga, harga)) {
-            // Create User Object
+
             val updatedKursus = Kursus(args.currentKursus.id, kursus, lembaga, Integer.parseInt(harga.toString()))
-            // Update Current User
+
             mKursusViewModel.updateKursus(updatedKursus)
             Toast.makeText(requireContext(), "Update berhasil!", Toast.LENGTH_SHORT).show()
-            // Navigate Back
+            // Navigasi kembali
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
             Toast.makeText(requireContext(), "Isi semua field.", Toast.LENGTH_SHORT)
@@ -66,6 +68,7 @@ class UpdateFragment : Fragment() {
         }
     }
 
+    //validasi input
     private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean {
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
     }
@@ -75,12 +78,14 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //mencari item id yang akan dihapus
         if (item.itemId == R.id.menu_delete) {
             deleteKursus()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    //Tombol hapus dari dialog yang muncul untuk menghapus item beradasarkan kursus yang sedang dipilih
     private fun deleteKursus() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Ya") { _, _ ->

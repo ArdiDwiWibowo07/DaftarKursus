@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 //TODO 6 : Buat view model
 class KursusViewModel(application: Application): AndroidViewModel(application) {
 
+    //Membuat live data
     val readAllData: LiveData<List<Kursus>>
     private val repository: KursusRepository
 

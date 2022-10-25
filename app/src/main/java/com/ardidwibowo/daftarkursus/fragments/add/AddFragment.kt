@@ -37,6 +37,7 @@ class AddFragment : Fragment() {
         return view
     }
 
+    //masukan data dari inputan yang dimasukan
     private fun insertDataToDatabase() {
         val kursus = addKursus_et.text.toString()
         val lembaga = addLembaga_et.text.toString()
@@ -60,6 +61,8 @@ class AddFragment : Fragment() {
         }
     }
 
+
+    //validasi input
     private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean{
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
     }

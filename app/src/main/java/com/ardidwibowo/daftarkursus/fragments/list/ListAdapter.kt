@@ -24,12 +24,14 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
        return kursusList.size
     }
 
+    //Tampilkan item yang ada
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = kursusList[position]
         holder.itemView.Kursus_txt.text = currentItem.kursus
         holder.itemView.Lembaga_txt.text = currentItem.lembaga
         holder.itemView.Harga_txt.text = currentItem.harga.toString()
 
+        //ketika ditekan item maka masuk ke updatefragment
         holder.itemView.rowLayout.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
